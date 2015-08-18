@@ -73,9 +73,7 @@ HELLO WORLD
 | Option  | Desciption |
 | ------------- | ------------- |
 | padding | add padding 2Kb, default true |
-| heartbeat | In order to keep the connection alive we send a "heartbeat"
-                 every 10 seconds.
-                     https://bugzilla.mozilla.org/show_bug.cgi?id=444328 |
+| heartbeat | send a "heartbeat" every 10 seconds. https://bugzilla.mozilla.org/show_bug.cgi?id=444328 |
 | retry | time to retry, default time 3000 |
 
 

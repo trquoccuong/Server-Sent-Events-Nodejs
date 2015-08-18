@@ -13,6 +13,10 @@
     "server sent",
     "sse"
   ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trquoccuong/Server-Sent-Events-Nodejs.git"
+  },
   "author": "Tran Quoc Cuong <trquoccuong@gmail.com>",
   "license": "MIT"
 }
