@@ -1,15 +1,17 @@
 {
-  "name": "sses",
+  "name": "sse-nodejs",
   "version": "0.0.1",
-  "description": "Make a server send event",
+  "description": "Make a server sent events",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "server",
-    "send",
-    "event"
+    "sent",
+    "event",
+    "server sent",
+    "sse"
   ],
   "author": "Tran Quoc Cuong <trquoccuong@gmail.com>",
   "license": "MIT"
