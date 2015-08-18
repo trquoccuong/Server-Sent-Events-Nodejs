@@ -1,0 +1,16 @@
+{
+  "name": "sses",
+  "version": "0.0.1",
+  "description": "Make a server send event",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "server",
+    "send",
+    "event"
+  ],
+  "author": "Tran Quoc Cuong <trquoccuong@gmail.com>",
+  "license": "MIT"
+}

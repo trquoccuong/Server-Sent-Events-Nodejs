@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+HELLO WORLD
+<div id="clock"></div>
+</body>
+<script>
+    var ev = new EventSource('/time');
+    ev.addEventListener('time', function (result) {
+        document.getElementById("clock").innerHTML += result.data
+    })
+</script>
+</html>
