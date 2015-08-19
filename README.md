@@ -13,7 +13,7 @@ $ npm install sse-nodejs
 
 Use with express:
 
-```
+```javascript
 var SSE = require('sse-nodejs');
 
 var express = require('express');
@@ -45,7 +45,7 @@ app.listen(3333);
 Use in frontend
 
 
-```
+```html
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +66,7 @@ HELLO WORLD
 
 ## Option
 
-```
+```javascript
     var app = sse(res,{option});
 ```
 
