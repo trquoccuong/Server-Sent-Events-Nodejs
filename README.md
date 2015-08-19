@@ -25,16 +25,16 @@ app.get('/', function (req,res) {
 });
 
 app.get('/time', function (req,res) {
-    var app = sse(res);
+    var serverSent = sse(res);
 
-    app.sendEvent('time', function () {
+    serverSent.sendEvent('time', function () {
         return new Date
     },1000);
-    app.disconnect(function () {
+    serverSent.disconnect(function () {
         console.log("disconnected");
     })
 
-    app.removeEvent('time',2000);
+    serverSent.removeEvent('time',2000);
 
 });
 
