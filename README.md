@@ -14,7 +14,7 @@ $ npm install sse-nodejs
 Use with express:
 
 ```
-var sse = require('sses');
+var SSE = require('sse-nodejs');
 
 var express = require('express');
 
@@ -25,7 +25,7 @@ app.get('/', function (req,res) {
 });
 
 app.get('/time', function (req,res) {
-    var serverSent = sse(res);
+    var serverSent = SSE(res);
 
     serverSent.sendEvent('time', function () {
         return new Date
