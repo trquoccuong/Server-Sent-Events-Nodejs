@@ -1,4 +1,4 @@
-var sse = require('sses');
+var sse = require('../');
 
 var express = require('express');
 
@@ -14,9 +14,6 @@ app.get('/time', function (req,res) {
     app.sendEvent('time', function () {
         return new Date
     },1000);
-    app.disconnect(function () {
-        console.log("disconnected");
-    })
 
     //app.removeEvent('time',2000);
 

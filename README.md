@@ -25,7 +25,7 @@ app.get('/', function (req,res) {
 });
 
 app.get('/time', function (req,res) {
-    var serverSent = SSE(res);
+    var serverSent = new SSE(res);
 
     serverSent.sendEvent('time', function () {
         return new Date

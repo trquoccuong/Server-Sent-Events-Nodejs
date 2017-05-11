@@ -40,6 +40,7 @@ class ServerSendEvent {
         } else {
             throw Error('Invalid data');
         }
+        this.res.flush()
     }
 
     sendInterval(name, fn, time) {
@@ -91,6 +92,7 @@ class ServerSendEvent {
                 } else {
                     throw Error('Invalid data');
                 }
+                this.res.flush()
             }
         } else {
             throw Error('Invalid parameter: name');
