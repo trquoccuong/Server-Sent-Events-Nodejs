@@ -67,7 +67,7 @@ HELLO WORLD
 ## Option
 
 ```javascript
-    var app = sse(res,{option});
+    var app = sse(res, options);
 ```
 
 | Option  | Desciption |
@@ -75,6 +75,9 @@ HELLO WORLD
 | padding | add padding 2Kb, default true |
 | heartbeat | send a "heartbeat" every 10 seconds. https://bugzilla.mozilla.org/show_bug.cgi?id=444328 |
 | retry | time to retry, default time 3000 |
+| headers | add extra header, default header {"Content-Type": "text/event-stream","Cache-Control": "no-cache", "Connection": "keep-alive"} |
+
+
 
 
 ## Function

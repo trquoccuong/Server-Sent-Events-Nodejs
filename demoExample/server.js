@@ -19,4 +19,6 @@ app.get('/time', function (req,res) {
 
 });
 
-app.listen(3333);
+app.listen(3333, function () {
+  console.log('Simple SSE server start at port: 3333')
+});

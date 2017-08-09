@@ -2,24 +2,27 @@
 var http = require('http');
 
 class ServerSendEvent {
-    constructor(response, option) {
+    constructor(response, options) {
         if (response instanceof http.OutgoingMessage) {
             this.res = response;
-            var option = option || {};
-            var padding = option.padding || true;
-            var heartbeat = option.heartbeat || false;
-            this.events = {};
-            this.id = 0;
-            this.res.writeHead(200, {
+            var options = options || {};
+            var defaultHeaders = {
                 "Content-Type": "text/event-stream",
                 "Cache-Control": "no-cache",
                 "Connection": "keep-alive"
-            });
+            };
+            var padding = options.padding || true;
+            var heartbeat = options.heartbeat || false;
+            var retry = options.retry || 3000;
+            var header = Object.assign({}, defaultHeaders, options.headers);
+            this.events = {};
+            this.id = 0;
+            this.res.writeHead(200, header);
 
             if (padding) {
                 this.res.write(":" + Array(2049).join(" ") + "\n"); // 2kB
             }
-            this.res.write("retry: " + (option.retry || 3000) + '\n');
+            this.res.write("retry: " + retry + '\n');
 
             if (heartbeat) {
                 setInterval(function () {
@@ -40,7 +43,7 @@ class ServerSendEvent {
         } else {
             throw Error('Invalid data');
         }
-        this.res.flush()
+        this.res.flushHeaders();
     }
 
     sendInterval(name, fn, time) {
@@ -92,7 +95,7 @@ class ServerSendEvent {
                 } else {
                     throw Error('Invalid data');
                 }
-                this.res.flush()
+                this.res.flushHeaders();
             }
         } else {
             throw Error('Invalid parameter: name');
@@ -101,9 +104,9 @@ class ServerSendEvent {
 
     disconnect(fn) {
         if (typeof fn === 'function') {
-            this.res.on('close', fn)
+            this.res.on('close', fn);
         } else {
-            throw Error('Parameter must be a function')
+            throw Error('Parameter must be a function');
         }
 
     }

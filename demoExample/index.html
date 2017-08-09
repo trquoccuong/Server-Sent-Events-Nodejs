@@ -10,7 +10,7 @@ HELLO WORLD
 <script>
     var ev = new EventSource('/time');
     ev.addEventListener('time', function (result) {
-        document.getElementById("clock").innerHTML += result.data
+        document.getElementById("clock").innerHTML += '<h4>' + result.data + '</h4>'
     })
 </script>
 </html>
