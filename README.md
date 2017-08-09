@@ -21,24 +21,27 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req,res) {
-   res.sendFile(__dirname+ '/index.html')
+   res.sendFile(__dirname+ '/index.html');
 });
 
 app.get('/time', function (req,res) {
-    var serverSent = new SSE(res);
+    var app = SSE(res);
 
-    serverSent.sendEvent('time', function () {
+    app.sendEvent('time', function () {
         return new Date
     },1000);
-    serverSent.disconnect(function () {
-        console.log("disconnected");
-    })
 
-    serverSent.removeEvent('time',2000);
+    app.disconnect(function () {
+        console.log("disconnected");
+    });
+
+    app.removeEvent('time',3100);
 
 });
 
-app.listen(3333);
+app.listen(3000, function () {
+    console.log('Simple SSE server start at port: 3000')
+});
 
 ```
 
@@ -48,9 +51,7 @@ Use in frontend
 ```html
 <!DOCTYPE html>
 <html>
-<head>
-
-</head>
+<head></head>
 <body>
 HELLO WORLD
 <div id="clock"></div>
@@ -58,7 +59,7 @@ HELLO WORLD
 <script>
     var ev = new EventSource('/time');
     ev.addEventListener('time', function (result) {
-        document.getElementById("clock").innerHTML += result.data
+        document.getElementById("clock").innerHTML += '<h4>' + result.data + '</h4>'
     })
 </script>
 </html>
@@ -76,8 +77,6 @@ HELLO WORLD
 | heartbeat | send a "heartbeat" every 10 seconds. https://bugzilla.mozilla.org/show_bug.cgi?id=444328 |
 | retry | time to retry, default time 3000 |
 | headers | add extra header, default header {"Content-Type": "text/event-stream","Cache-Control": "no-cache", "Connection": "keep-alive"} |
-
-
 
 
 ## Function
